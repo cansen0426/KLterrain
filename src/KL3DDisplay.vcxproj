@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B691D3D1-726F-48CD-82D3-731042D7A62C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>KL3DDisplay</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>..\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\include\Gdal;</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>gdal_i.lib;OpenThreadsd.lib;osgd.lib;osgDBd.lib;osgFXd.lib;osgGAd.lib;osgManipulatord.lib;osgParticled.lib;osgShadowd.lib;osgSimd.lib;osgTerraind.lib;osgTextd.lib;osgUtild.lib;osgViewerd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\lib;</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\include\Gdal;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>gdal_i.lib;OpenThreads.lib;osg.lib;osgDB.lib;osgFX.lib;osgGA.lib;osgManipulator.lib;osgParticle.lib;osgShadow.lib;osgSim.lib;osgTerrain.lib;osgText.lib;osgUtil.lib;osgViewer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\KL3DBaseHandler.cpp" />
+    <ClCompile Include="..\src\KL3DDesignHandle.cpp" />
+    <ClCompile Include="..\src\KL3DDesignNode.cpp" />
+    <ClCompile Include="..\src\KL3DDesignPolygonHandle.cpp" />
+    <ClCompile Include="..\src\KL3DDesignShape.cpp" />
+    <ClCompile Include="..\src\KL3DGeospatialExtents.cpp" />
+    <ClCompile Include="..\src\KL3DLine.cpp" />
+    <ClCompile Include="..\src\KL3DLineGeode.cpp" />
+    <ClCompile Include="..\src\KL3DLinesNode.cpp" />
+    <ClCompile Include="..\src\KL3DMapCache.cpp" />
+    <ClCompile Include="..\src\KL3DMapManager.cpp" />
+    <ClCompile Include="..\src\KL3DOPerationActive.cpp" />
+    <ClCompile Include="..\src\KL3DOperationBase.cpp" />
+    <ClCompile Include="..\src\KL3DOperationDelete.cpp" />
+    <ClCompile Include="..\src\KL3DOperationForbid.cpp" />
+    <ClCompile Include="..\src\KL3DOperationMove.cpp" />
+    <ClCompile Include="..\src\KL3DOperationSel.cpp" />
+    <ClCompile Include="..\src\KL3DOperationUnsel.cpp" />
+    <ClCompile Include="..\src\KL3DPoint.cpp" />
+    <ClCompile Include="..\src\KL3DPointGeode.cpp" />
+    <ClCompile Include="..\src\KL3DPointsNode.cpp" />
+    <ClCompile Include="..\src\KL3DTerrainTileManager.cpp" />
+    <ClCompile Include="..\src\KL3DTextureManager.cpp" />
+    <ClCompile Include="KL3DOperationAdd.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\KL3DBaseHandler.h" />
+    <ClInclude Include="..\include\KL3DCommonStruct.h" />
+    <ClInclude Include="..\include\KL3DDesignHandle.h" />
+    <ClInclude Include="..\include\KL3DDesignNode.h" />
+    <ClInclude Include="..\include\KL3DDesignPolygonHandle.h" />
+    <ClInclude Include="..\include\KL3DDesignShape.h" />
+    <ClInclude Include="..\include\KL3DGeospatialExtents.h" />
+    <ClInclude Include="..\include\KL3DLine.h" />
+    <ClInclude Include="..\include\KL3DLineGeode.h" />
+    <ClInclude Include="..\include\KL3DLinesNode.h" />
+    <ClInclude Include="..\include\KL3DMapCache.h" />
+    <ClInclude Include="..\include\KL3DMapManager.h" />
+    <ClInclude Include="..\include\KL3DOPerationActive.h" />
+    <ClInclude Include="..\include\KL3DOperationAdd.h" />
+    <ClInclude Include="..\include\KL3DOperationBase.h" />
+    <ClInclude Include="..\include\KL3DOperationDelete.h" />
+    <ClInclude Include="..\include\KL3DOperationForbid.h" />
+    <ClInclude Include="..\include\KL3DOperationMove.h" />
+    <ClInclude Include="..\include\KL3DOperationSel.h" />
+    <ClInclude Include="..\include\KL3DOperationUnsel.h" />
+    <ClInclude Include="..\include\KL3DPoint.h" />
+    <ClInclude Include="..\include\KL3DPointGeode.h" />
+    <ClInclude Include="..\include\KL3DPointsNode.h" />
+    <ClInclude Include="..\include\KL3DTerrainTileManager.h" />
+    <ClInclude Include="..\include\KL3DTextureManager.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
