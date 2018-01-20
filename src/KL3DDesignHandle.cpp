@@ -67,7 +67,11 @@ void KL3DDesignHandle::keydownEvent(const osgGA::GUIEventAdapter& ea, osgGA::GUI
 		m_mapManager->editShotPoint();
 
 	}
-
+	if (ea.getKey()== 'w'|| ea.getKey() == 'W')
+	{
+		m_isEditState = true;
+		m_mapManager->gridHoming();
+	}
 	//按P键进行检点编辑操作
 	if(ea.getKey() == 'p' || ea.getKey() == 'P')
 	{

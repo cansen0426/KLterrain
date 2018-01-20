@@ -122,6 +122,17 @@ public:
 	/*!设置地形Z值拉伸系数*/
 	void setTerrainScaleZ(float& pTerrainScaleZ);
 
+	/*!网格归位*/
+	void gridHoming();
+	/*!坐标归位*/
+	void ProjectToGrid_3D(double &x,double &y,
+		double &hInterval,double &halfHInterval,
+		double &vInterval,double &halfVInterval,
+		double &x0,double &y0,
+		double &sinValue,double &cosValue);
+	/*!偏移函数*/
+	void SDRound_3D(double &value,double &gridLength,double &halfGridLength);
+
 	//*********炮检点编辑状态控制函数*********//
 	/*!获取当前编辑对象*/
 	KL3DEditObject getEditObject();

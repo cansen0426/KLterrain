@@ -191,12 +191,12 @@ bool KL3DDesignShape::generate3DDesignData(osgViewer::Viewer* pViewer,osgTerrain
 	osg::ComputeBoundsVisitor cbVisitor;
 	pTerrain->accept(cbVisitor);
 	osg::BoundingBox terrainBoundingBox = cbVisitor.getBoundingBox();
-
+	//炮点布设的二维面积
 	double xMin = terrainBoundingBox.xMin() + (terrainBoundingBox.xMax() - terrainBoundingBox.xMin())*0.2;
 	double yMin = terrainBoundingBox.yMin() + (terrainBoundingBox.yMax() - terrainBoundingBox.yMin())*0.2;
 	double xMax = terrainBoundingBox.xMax() - (terrainBoundingBox.xMax() - terrainBoundingBox.xMin())*0.2;
 	double yMax = terrainBoundingBox.yMax() - (terrainBoundingBox.yMax() - terrainBoundingBox.yMin())*0.2;
-
+	//检点布设的二维面积
 	double xMin2 = terrainBoundingBox.xMin() + (terrainBoundingBox.xMax() - terrainBoundingBox.xMin())*0.1;
 	double yMin2 = terrainBoundingBox.yMin() + (terrainBoundingBox.yMax() - terrainBoundingBox.yMin())*0.1;
 	double xMax2 = terrainBoundingBox.xMax() - (terrainBoundingBox.xMax() - terrainBoundingBox.xMin())*0.1;
@@ -205,7 +205,7 @@ bool KL3DDesignShape::generate3DDesignData(osgViewer::Viewer* pViewer,osgTerrain
 	long pointNum = 0;
 	double shotPointInterval = 1200.0;
 	double rcvPointInterVal = 900.0;
-	//设置炮检
+	//设置炮点
 	for(unsigned int i = 0; i < unsigned int((xMax - xMin)/shotPointInterval); i++)
 	{
 		KL3DLine* p3DLine = new KL3DLine();

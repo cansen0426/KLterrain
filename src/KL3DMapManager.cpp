@@ -924,3 +924,71 @@ bool KL3DMapManager::isRcvLineEdit() const
 {
 	return m_isRcvLineEdit;
 }
+
+void KL3DMapManager::gridHoming()
+{
+	KL3DEditPointSet* pEditPointSet = m_mainCache->getEditPoints();
+	KL3DDesignNode* pDesignNode = getMainDesignNode();
+	if(pEditPointSet->size() != 0)
+	{
+		KL3DEditPointSet::iterator iterEditPoint = pEditPointSet->begin();
+		for(; iterEditPoint != pEditPointSet->end(); ++iterEditPoint)
+		{
+			KL3DEditPoint editPoint = *iterEditPoint;
+			double id = editPoint.m_lineID;
+			KL3DLineType type = editPoint.m_type;
+			KL3DPoint* p3DPoint = editPoint.m_editPoint;
+			double moveX = p3DPoint->getCoord().x()+100;
+			double moveY = p3DPoint->getCoord().y()+100;
+			double moveZ = p3DPoint->getCoord().z();
+			//double moveX = p3DPoint->getCoord().x();
+			//double moveY = p3DPoint->getCoord().y();
+			//double moveZ = p3DPoint->getCoord().z();
+
+
+			p3DPoint->setCoord(osg::Vec3f(moveX,moveY,moveZ));
+
+			KL3DLine* pLine = m_mainCache->getLine(id,type);
+			osg::Vec3Array* pVertexArray = pLine->getVertexArray();
+			(*pVertexArray)[p3DPoint->getIndex()] += osg::Vec3(100.0,100.0,0.0);
+		}
+	}
+	pDesignNode->reDraw();
+}
+
+void KL3DMapManager::ProjectToGrid_3D(double &x,double &y, double &hInterval,double &halfHInterval, double &vInterval,double &halfVInterval, double &x0,double &y0, double &sinValue,double &cosValue)
+{
+	double x1,y1,x2,y2;
+	//步骤1：平移
+	x1 = x - x0;
+	y1 = y - y0;
+	//步骤2：旋转
+	x2 = x1*sinValue - y1*cosValue;
+	y2 = y1*sinValue + x1*cosValue;
+	//步骤3：网格归位
+	SDRound_3D(x2,vInterval,halfVInterval);
+	SDRound_3D(y2,hInterval,halfHInterval);
+	//步骤4：反旋转
+	x1 = x2*sinValue + y2*cosValue;
+	y1 = y2*sinValue - x2*cosValue;
+	//步骤5：反平移
+	x = x1 + x0;
+	y = y1 + y0;
+
+}
+
+void KL3DMapManager::SDRound_3D(double &value,double &gridLength,double &halfGridLength)
+{
+	int timer;
+
+	if (value >= 0)
+	{
+		value += halfGridLength;
+	}
+	else
+	{
+		value -= halfGridLength;
+	}
+	timer = (int) (value/gridLength);
+	value = timer*gridLength;
+}

@@ -37,6 +37,11 @@ void KL3DOperationMove::build()
 			KL3DPoint* p3DPoint = editPoint.m_editPoint;
 			p3DPoint->setCoord(p3DPoint->getCoord() + m_distanceOffset);
 
+			//double moveX = p3DPoint->getCoord().x()+100;
+			//double moveY = p3DPoint->getCoord().y()+100;
+			//double moveZ = p3DPoint->getCoord().z();
+			//p3DPoint->setCoord(osg::Vec3f(moveX,moveY,moveZ));
+			
 			KL3DLine* pLine = pCache->getLine(id, type);
 			osg::Vec3Array* pVertexArray = pLine->getVertexArray();
 			(*pVertexArray)[p3DPoint->getIndex()] += m_distanceOffset;
